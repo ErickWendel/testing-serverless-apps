@@ -1,0 +1,25 @@
+{
+  "name": "tooling-jest-docker-plus",
+  "version": "0.0.1",
+  "description": "<!-- title: 'AWS Simple HTTP Endpoint example in NodeJS' description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0",
+    "test": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --collect-coverage ",
+    "test:watch": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --watch-all "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1197.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "nodemon": "^2.0.19",
+    "serverless": "^3.38.0",
+    "serverless-offline": "9.2"
+  }
+}
