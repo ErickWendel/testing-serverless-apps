@@ -24,7 +24,7 @@ jobs:
       run: docker-compose up -d localstack
 
     - name: Run tests
-      run: docker-compose up --build --exit-code-from test
+      run: docker-compose up --exit-code-from test
 
     - name: Clean up
       run: docker-compose down --volumes
