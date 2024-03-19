@@ -16,7 +16,7 @@ services:
       - .:/src
       - nodemodules:/src/node_modules
     restart: on-failure
-    ports: 
+    ports:
       - 3000:3000
     depends_on:
       - localstack
@@ -26,7 +26,7 @@ services:
       AWS_SECRET_ACCESS_KEY: test
   test:
     build: .
-    command: npm run test:watch
+    command: npm run test
     volumes:
       - .:/src
       - nodemodules:/src/node_modules
