@@ -23,9 +23,6 @@ jobs:
     - name: Start localstack
       run: docker-compose up -d localstack
 
-    - name: Build docker image
-      run: docker build -t e2e-tests-sls .
-
     - name: Run tests
       run: docker-compose up --build test
 
