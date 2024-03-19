@@ -26,10 +26,9 @@ jobs:
     - name: Run tests
       run: |
         docker-compose up --build test
-        test_status=$?
-        if [ $test_status -ne 0 ]; then
-          echo "Tests failed with status code: $test_status"
-          exit $test_status
+        if [ $? -ne 0 ]; then
+          echo "Tests failed"
+          exit 1
         fi
 
     - name: Clean up
