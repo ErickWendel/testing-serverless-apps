@@ -24,7 +24,13 @@ jobs:
       run: docker-compose up -d localstack
 
     - name: Run tests
-      run: docker-compose up --build test
+      run: |
+        docker-compose up --build test
+        test_status=$?
+        if [ $test_status -ne 0 ]; then
+          echo "Tests failed with status code: $test_status"
+          exit $test_status
+        fi
 
     - name: Clean up
       run: docker-compose down
