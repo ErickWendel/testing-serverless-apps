@@ -1,24 +1,30 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: DockerCompose CI
+name: Docker Actions
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  run_tests_with_localstack:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3       
-    - uses: adambirds/docker-compose-action@v1.3.0
-      with:
-        compose-file: "./docker-compose.yml"
-        down-flags: "--volumes"
-        services: |
-          test
-        test-container: test
-        test-command: "npm test"
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Compose
+      run: |
+        sudo rm /usr/local/bin/docker-compose
+        curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /tmp/docker-compose
+        chmod +x /tmp/docker-compose
+        sudo mv /tmp/docker-compose /usr/local/bin/docker-compose
+
+    - name: Start localstack
+      run: docker-compose up -d localstack
+
+    - name: Run tests
+      run: docker-compose up --build test
+
+    - name: Clean up
+      run: docker-compose down
