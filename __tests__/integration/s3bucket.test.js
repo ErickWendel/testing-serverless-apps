@@ -26,7 +26,7 @@ describe('Testing AWS Servicess offline with LocalStack', () => {
     const response = await main()
     const { allBuckets: { Buckets } } = JSON.parse(response.body)
     const { Name } = Buckets.find(({ Name }) => Name === expected)
-    expect(2).toStrictEqual(expected)
+    expect(Name).toStrictEqual(expected)
     expect(response.statusCode).toStrictEqual(200)
   })
 })
