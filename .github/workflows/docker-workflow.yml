@@ -13,13 +13,12 @@ jobs:
   run_tests_with_localstack:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3       
     - uses: adambirds/docker-compose-action@v1.3.0
       with:
         compose-file: "./docker-compose.yml"
         down-flags: "--volumes"
         services: |
-          localstack
           test
         test-container: test
         test-command: "npm test"
