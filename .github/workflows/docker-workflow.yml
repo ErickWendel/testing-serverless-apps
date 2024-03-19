@@ -27,7 +27,7 @@ jobs:
       run: docker build -t e2e-tests-sls .
 
     - name: Run tests
-      run: docker run --restart=on-failure --env LOCALSTACK_HOST=localstack --env AWS_ACCESS_KEY_ID=test --env AWS_SECRET_ACCESS_KEY=test --network default e2e-tests-sls npm run test
+      run: docker-compose up --build test
 
     - name: Clean up
       run: docker-compose down --volumes
