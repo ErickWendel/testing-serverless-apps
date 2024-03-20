@@ -1,4 +1,4 @@
-# Example of how to run e2e tests on serverless apps using LocalStack
+# Example of how to run e2e and unit tests on serverless apps using LocalStack and Jest
 
 This is a description of your project.
 
