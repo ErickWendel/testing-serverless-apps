@@ -39,6 +39,6 @@ describe('Unit Tests', () => {
         expect(S3.listBuckets().promise).toBeCalledTimes(1)
 
         expect(Buckets).toStrictEqual(myBuckets)
-        expect(response.statusCode).toStrictEqual(201)
+        expect(response.statusCode).toStrictEqual(200)
     })
 })
