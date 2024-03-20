@@ -1,4 +1,4 @@
-# Project Name
+# Example of how to run e2e tests on serverless apps using LocalStack
 
 This is a description of your project.
 
