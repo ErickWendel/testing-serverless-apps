@@ -2,7 +2,7 @@ import { S3Client, CreateBucketCommand, ListBucketsCommand, DeleteBucketCommand 
 
 const s3config = {
   forcePathStyle: true,
-  region: process.env.AWS_REGION,
+  region: "us-east-1",
 }
 const isLocal = process.env.IS_OFFLINE
 

@@ -9,21 +9,15 @@ services:
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - SERVICES=s3
-      - AWS_DEFAULT_REGION=us-east-1
 
   test:
     build: .
     command: npm run test
     volumes:
       - .:/src
-      - nodemodules:/src/node_modules
-    restart: on-failure
     depends_on:
       - localstack
     environment:
       LOCALSTACK_HOST: localstack
       AWS_ACCESS_KEY_ID: test
       AWS_SECRET_ACCESS_KEY: test
-      AWS_REGION: us-east-1
-volumes:
-  nodemodules: {}
