@@ -13,12 +13,13 @@ describe('Testing AWS Servicess offline with LocalStack', () => {
   const bucketConfig = {
     Bucket: "test"
   }
+
   beforeAll(async () => {
-    await S3.createBucket(bucketConfig).promise()
+    await S3.createBucket(bucketConfig)
   })
 
   afterAll(async () => {
-    await S3.deleteBucket(bucketConfig).promise()
+    await S3.deleteBucket(bucketConfig)
   })
 
   it('it should return an array with a S3 Bucket', async () => {

@@ -22,21 +22,15 @@ describe('Unit Tests', () => {
             },
         ]
 
-        const S3Mock = {
-            listBuckets: jest.fn().mockReturnThis(),
-            promise: jest.fn().mockResolvedValue({
-                Buckets: myBuckets
-            })
-        }
 
-        jest.spyOn(S3, 'listBuckets').mockReturnValue(S3Mock)
-
+        jest.spyOn(S3, 'listBuckets').mockResolvedValue({
+            Buckets: myBuckets
+        })
 
         const response = await main()
         const { allBuckets: { Buckets } } = JSON.parse(response.body)
 
         expect(S3.listBuckets).toBeCalledTimes(1)
-        expect(S3.listBuckets().promise).toBeCalledTimes(1)
 
         expect(Buckets).toStrictEqual(myBuckets)
         expect(response.statusCode).toStrictEqual(200)

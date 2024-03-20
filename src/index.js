@@ -2,7 +2,7 @@
 
 import { S3 } from "./factory.js"
  async function main(event) {
-  const allBuckets = await S3.listBuckets().promise()
+  const allBuckets = await S3.listBuckets()
   console.log('found', allBuckets)
 
   return {

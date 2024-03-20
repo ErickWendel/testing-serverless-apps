@@ -1,19 +1,29 @@
-import AWS from 'aws-sdk'
+import { S3Client, CreateBucketCommand, ListBucketsCommand, DeleteBucketCommand } from '@aws-sdk/client-s3'
 
 const s3config = {
-  s3ForcePathStyle: true
+  forcePathStyle: true,
 }
 const isLocal = process.env.IS_OFFLINE
 
-
-if(isLocal) {
+if (isLocal) {
   const host = process.env.LOCALSTACK_HOST || "localhost"
-  s3config.endpoint = new AWS.Endpoint(
-    `http://${host}:4566`
-  )
+  s3config.endpoint = `http://${host}:4566`
 }
 
-const S3 = new AWS.S3(s3config)
+const s3Client = new S3Client(s3config)
+const S3 = {
+  /** @param {ListBucketsCommandInput} args */
+  listBuckets: (args) => {
+    return s3Client.send(new ListBucketsCommand(args))
+  },
+  createBucket: (args) => {
+    return s3Client.send(new CreateBucketCommand(args))
+  },
+
+  deleteBucket: (args) => {
+    return s3Client.send(new DeleteBucketCommand(args))
+  }
+}
 
 export {
   S3
