@@ -7,7 +7,9 @@
   "scripts": {
     "start": "npx nodemon --exec npm run offline",
     "offline": "npx sls offline start --host 0.0.0.0",
-    "test": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --collect-coverage ",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --collect-coverage test/e2e",
+    "test:unit": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --collect-coverage test/unit",
     "test:watch": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --watch-all "
   },
   "keywords": [],
