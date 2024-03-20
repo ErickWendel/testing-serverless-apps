@@ -12,7 +12,7 @@
     "test:debug": "IS_OFFLINE=true node --inspect --experimental-vm-modules ./node_modules/.bin/jest --runInBand --watch",
     "test:e2e": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --runInBand test/e2e",
     "test:unit": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --runInBand test/unit",
-    "test:watch": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --runInBand --watch-all "
+    "test:watch": "IS_OFFLINE=true node --experimental-vm-modules ./node_modules/.bin/jest --runInBand --watchAll"
   },
   "keywords": [],
   "author": "",
