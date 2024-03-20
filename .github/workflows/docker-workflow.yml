@@ -2,11 +2,17 @@ name: Docker Actions
 
 on:
   push:
+    paths:
+      - '**.js'
+      - '**.json'
+      - '**.yml'
     branches:
       - main
-
+env:
+  AWS_ACCESS_KEY_ID: test
+  AWS_SECRET_ACCESS_KEY: test
 jobs:
-  build-and-test:
+  setup-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +29,13 @@ jobs:
     - name: Start localstack
       run: docker-compose up -d localstack
 
-    - name: Run tests
-      run: docker-compose up --build test
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - run: npm ci
+    - run: npm test
 
     - name: Clean up
       run: docker-compose down --volumes
