@@ -13,10 +13,12 @@ describe('Unit Tests', () => {
     it('it should return an array with a S3 Bucket', async () => {
         const myBuckets = [
             {
-                Name: "dvds-piratas001"
+                Name: "dvds-piratas001",
+                CreationDate: '2024-03-20T20:32:13.000Z'
             },
             {
-                Name: "foto-de-familia001"
+                Name: "foto-de-familia001",
+                CreationDate: '2024-03-20T20:32:13.000Z'
             },
         ]
 
