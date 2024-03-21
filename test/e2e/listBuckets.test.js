@@ -11,7 +11,7 @@ import { main } from './../../src/index.js'
 
 describe('Testing AWS Servicess offline with LocalStack', () => {
   const bucketConfig = {
-    Bucket: "test"
+    Bucket: "test2"
   }
 
   beforeAll(async () => {
