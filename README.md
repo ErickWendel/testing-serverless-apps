@@ -1,46 +1,29 @@
 # Example of how to run e2e and unit tests on serverless apps using LocalStack and Jest
+[![Build Status](https://github.com/ErickWendel/testing-serverless-apps/workflows/Docker%20Actions/badge.svg)](https://github.com/ErickWendel/testing-serverless-apps/actions)
 
-This is a description of your project.
+Code samples of my video on [testing serverless applications](https://youtu.be/rwyhw9UYHkA). 
 
-## Workflow Status
+It uses **Jest** as test runner, **LocalStack** as a mock server for AWS Services, **serverless framework** to deploy apps on AWS and **GitHub Actions** as continuous integration platform.
 
-[![Build Status](https://github.com/ErickWendel/e2e-tests-serverless-apps/workflows/Docker%20Actions/badge.svg)](https://github.com/ErickWendel/e2e-tests-serverless-apps/actions)
+Note that it uses **ECMAScript Modules** empowered by **Node.js v20** without any bundlers (NICE).
 
-## About
+Leave your star 🌟 in the project 💚
 
-Briefly describe what your project does and its purpose.
+- In the ./tests folder I put two examples: [**e2e**](./test/e2e/listBuckets.test.js) and [**unit**](./test/unit/listBuckets.test.js) tests folder and there you can take a look on how to make those tests. 
+- In [./src/factory.js](./src/factory.js) you can take a look on how to configure the **AWS SDK v3** to point it to localStack when in development mode.
+  
+## Running
+![Testando aplicacnes serverless](https://github.com/ErickWendel/testing-serverless-apps/assets/8060102/41ea502b-8d62-4592-9311-91ae1e269113)
+### Pre reqs
 
-## Setup
+- Install Docker & Docker-compose
+- Install Node.js v20
 
-Describe how to set up the project locally or any prerequisites needed to run the project.
+### Running
 
-## Usage
+- run `docker-compose up -d localstack`
+- restore node.js dependencies `npm ci`
+- run tests `npm t` or press `F5` on VSCode.
 
-Explain how to use the project or any commands to run.
+  
 
-## Workflow Steps
-
-The GitHub Actions workflow includes the following steps:
-
-1. **Checkout repository**: Checks out the repository code.
-2. **Set up Docker Compose**: Sets up Docker Compose for the project.
-3. **Start localstack**: Starts the Localstack service.
-4. **Set up Node.js 20**: Sets up Node.js version 20.
-5. **Install dependencies**: Installs project dependencies using npm.
-6. **Run tests**: Executes project tests.
-7. **Clean up**: Brings down the Docker Compose services.
-
-## Contributing
-
-If you want to contribute to this project, follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Make your changes
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin feature/your-feature`)
-6. Create a new Pull Request
-
-## License
-
-Include your project's license information here.
